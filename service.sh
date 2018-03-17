@@ -39,7 +39,7 @@ is_runningd() {
 set -x 2>$srv_log;
 
 # Set mod_dir in the Main
-(busybox sed -i "s|^mod_dir=.*|mod_dir=$mod_dir;|g" $(ls $mod_dir/xbin/mcc || ls $mod_dir/bin/mcc);
+(busybox sed -i "s|^mod_dir=.*|mod_dir=$mod_dir;|g" $(ls $mod_dir/system/xbin/mcc || ls $mod_dir/system/bin/mcc);
 
 # Set BusyBox up
 rm -rf $mcc_bin; mkdir $mcc_bin;
