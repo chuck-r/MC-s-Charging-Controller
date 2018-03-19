@@ -112,6 +112,9 @@ while read uevent; do
         if is_charging; then
             for ref in ${uevent%/*}/*; do
                 if [[ -f $ref ]]; then
+                    case $ref in
+                        set_ship_mode) continue; ;;
+                    esac;
                     chmod u+rw $ref;
                     case $(cat $ref) in
                         1       ) c_ON=1;        c_OFF=0;        ;;

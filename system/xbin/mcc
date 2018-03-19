@@ -238,6 +238,12 @@ set_ctrl_refs() {
             set_prop uevent $uevent;
             for ref in ${uevent%/*}/*; do
                 if [[ -f $ref ]]; then
+                    ## toggling some specific files results in crashes, exclude them
+                    case $ref in
+                        ## pixel 2 xl crashes when toggling this file
+                        set_ship_mode) continue; ;;
+                    esac;
+
                     chmod u+rw $ref;
 
                     ## cycling through all, get a possible boolean switch
